@@ -10,7 +10,7 @@ bus = smbus.SMBus(channel)
 
 print("writing...")
 for i in range(0x40,0x40+50):
-
+    print(i)
     bus.write_byte_data(address, i, 0)
     bus.write_byte_data(address, i+1, 0xFF)
     time.sleep(0.5)
