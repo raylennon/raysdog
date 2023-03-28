@@ -1,0 +1,30 @@
+<html>
+
+<head>
+  <meta charset=utf-8 />
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Foliotek/AjaxQ/ajaxq.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/marcoschwartz/aREST.js/aREST.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+      <title>Ray's Dog</title>
+
+      <style>
+        .box img {
+          position: absolute;
+          left: 10%;  
+          width: 75%;
+            height: 80%;
+            object-fit: contain;
+        }
+      </style>
+  </head >
+      <body>
+        <div class="bg-image"></div>
+        <div class="box">
+          <img src="{{ url_for('video_feed') }}">
+        </div>
+      </body>
+</html >
