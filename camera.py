@@ -23,6 +23,7 @@ class Camera(BaseCamera):
     @staticmethod
     def frames():
         camera = cv2.VideoCapture(-1, cv2.CAP_V4L)
+        camera.set(cv2.CAP_PROP_BUFFERSIZE, 2)
         camera.set(3, 640)
         camera.set(4, 480)
         if not camera.isOpened():
@@ -30,6 +31,6 @@ class Camera(BaseCamera):
 
         while True:
             _, img = camera.read()
-
+            time.sleep(1/15)
             # encode as a jpeg image and return it
             yield cv2.imencode('.jpg', img)[1].tobytes()
