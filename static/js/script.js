@@ -12,6 +12,9 @@ $( document ).ready(function() {
         case 38:
           device.callFunction("forward"); 
           console.log("Running forward!");
+          var request = new XMLHttpRequest();
+          request.open("GET", "/go_forward", true);
+          request.send();
           break;
         case 37:
           device.callFunction("left");
@@ -26,19 +29,16 @@ $( document ).ready(function() {
       console.log(e.key);
     });
     $(document).keyup(function(e) {
-      device.callFunction("stop");
-    });
-    $('#forward').mousedown(function() {
-      device.callFunction("forward");
-      var request = new XMLHttpRequest();
-      request.open("GET", "/go_forward", true);
-      request.send();
-    });
-    $('#forward').mouseup(function() {
-      device.callFunction("stop");
       var request = new XMLHttpRequest();
       request.open("GET", "/go_stop", true);
       request.send();
+      device.callFunction("stop");0
+    });
+    $('#forward').mousedown(function() {
+      device.callFunction("forward");
+    });
+    $('#forward').mouseup(function() {
+      device.callFunction("stop");
     });
 
     $('#right').mousedown(function() {
