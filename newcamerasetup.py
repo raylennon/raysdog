@@ -6,7 +6,7 @@ import socket
 import io
 
 app = Flask(__name__)
-vc = cv2.VideoCapture(0)
+vc = cv2.VideoCapture(-1)
 
 @app.route('/')
 def index():
