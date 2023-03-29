@@ -25,31 +25,20 @@ $( document ).ready(function() {
       } 
       console.log(e.key);
     });
-
-    // $(document).keydown(function(e) {
-    //   switch(e.which) {
-    //     // case 38:
-    //     //   device.callFunction("forward"); 
-    //     //   break;
-    //     case 37:
-    //       device.callFunction("left");
-    //       break;
-    //     case 39:
-    //       device.callFunction("right");
-    //       break;
-    //     case 40:
-    //       device.callFunction("backward");
-    //       break;
-    //   } 
-    // });
     $(document).keyup(function(e) {
       device.callFunction("stop");
     });
     $('#forward').mousedown(function() {
       device.callFunction("forward");
+      var request = new XMLHttpRequest();
+      request.open("GET", "/go_forward", true);
+      request.send();
     });
     $('#forward').mouseup(function() {
       device.callFunction("stop");
+      var request = new XMLHttpRequest();
+      request.open("GET", "/go_stop", true);
+      request.send();
     });
 
     $('#right').mousedown(function() {
