@@ -12,7 +12,6 @@ $( document ).ready(function() {
       switch(e.keyCode) {
         case 38:
           device.callFunction("forward"); 
-          console.log("Running forward!");
           request.open("GET", "/go_forward", true);
           break;
         case 37:
