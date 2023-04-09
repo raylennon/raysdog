@@ -77,7 +77,7 @@ def command(cmd=None):
         motor3.throttle = motor4.throttle = 1
 
     elif cmd=="right":
-    motor3.throttle = motor4.throttle = -1
+        motor3.throttle = motor4.throttle = -1
 
     return r
 
