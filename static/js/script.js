@@ -11,7 +11,7 @@ $( document ).ready(function() {
       var request = new XMLHttpRequest();
       switch(e.keyCode) {
         case 38:
-          device.callFunction("forward"); 
+          // device.callFunction("forward"); 
           request.open("GET", "/go_forward", true);
           break;
         case 37:
