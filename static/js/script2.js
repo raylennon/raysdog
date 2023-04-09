@@ -41,7 +41,7 @@ $( document ).ready(function() {
         // Remove the key from the keysPressed object
         var request = new XMLHttpRequest();
         delete keysPressed[event.key];
-        if (Object.keys(keysPressed).length === 0) {
+        if (True){//Object.keys(keysPressed).length === 0) {
             var request = new XMLHttpRequest();
             request.open("GET", "/go_stop", true);
             request.send();
