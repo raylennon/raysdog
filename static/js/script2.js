@@ -25,6 +25,7 @@ $( document ).ready(function() {
             request.open("GET", "/go_br", true);
         } else if (event.key === 'ArrowUp') {
             request.open("GET", "/go_forward", true);
+            console.log("Forward ho!!");
         } else if (event.key === 'ArrowDown') {
             request.open("GET", "/go_back", true);
         } else if (event.key === 'ArrowRight') {
