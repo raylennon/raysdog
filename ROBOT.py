@@ -66,7 +66,7 @@ def command(cmd=None):
     r = cmd.lower()
     if cmd=="forward":
         motor3.throttle = 1
-        motor4.throttle = -1
+        motor4.throttle = -0.7
     elif cmd=="stop":
         motor3.throttle = motor4.throttle = 0
     elif cmd=="back":
