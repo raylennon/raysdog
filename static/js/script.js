@@ -2,8 +2,6 @@ $( document ).ready(function() {
 
     // Device
     var address = "10.194.145.32";
-    var device = new Device(address);
-
     // Buttons
 
     document.addEventListener('keydown', (e) => {
@@ -15,15 +13,15 @@ $( document ).ready(function() {
           request.open("GET", "/go_forward", true);
           break;
         case 37:
-          device.callFunction("left");
+          // device.callFunction("left");
           request.open("GET", "/go_left", true);
           break;
         case 39:
-          device.callFunction("right");
+          // device.callFunction("right");
           request.open("GET", "/go_right", true);
           break;
         case 40:
-          device.callFunction("backward");
+          // device.callFunction("backward");
           request.open("GET", "/go_back", true);
           break;
     } 
