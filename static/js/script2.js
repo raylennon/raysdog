@@ -39,8 +39,30 @@ $( document ).ready(function() {
       
       document.addEventListener('keyup', function(event) {
         // Remove the key from the keysPressed object
+        var request = new XMLHttpRequest();
         delete keysPressed[event.key];
-      
+
+        console.log(event.key);
+        // Check which key or combination of keys was pressed
+        if (keysPressed['ArrowUp'] && keysPressed['ArrowLeft']) {
+            request.open("GET", "/go_fl", true);
+        } else if (keysPressed['ArrowUp'] && keysPressed['ArrowRight']) {
+            request.open("GET", "/go_fr", true);
+        } else if (keysPressed['ArrowDown'] && keysPressed['ArrowLeft']) {
+            request.open("GET", "/go_bl", true);
+        } else if (keysPressed['ArrowDown'] && keysPressed['ArrowRight']) {
+            request.open("GET", "/go_br", true);
+        } else if (event.key === 'ArrowUp') {
+            request.open("GET", "/go_forward", true);
+            console.log("Forward ho!!");
+        } else if (event.key === 'ArrowDown') {
+            request.open("GET", "/go_back", true);
+        } else if (event.key === 'ArrowRight') {
+            request.open("GET", "/go_right", true);
+        } else if (event.key === 'ArrowLeft') {
+            request.open("GET", "/go_left", true);
+        }
+        request.send();
         // Check if all keys have been released
         if (Object.keys(keysPressed).length === 0) {
             var request = new XMLHttpRequest();
