@@ -41,6 +41,13 @@ $( document ).ready(function() {
         // Remove the key from the keysPressed object
         var request = new XMLHttpRequest();
         delete keysPressed[event.key];
+        if (Object.keys(keysPressed).length === 0) {
+            var request = new XMLHttpRequest();
+            request.open("GET", "/go_stop", true);
+            request.send();
+            device.callFunction("stop");
+            return
+        }
 
         console.log(event.key);
         // Check which key or combination of keys was pressed
@@ -64,12 +71,7 @@ $( document ).ready(function() {
         }
         request.send();
         // Check if all keys have been released
-        if (Object.keys(keysPressed).length === 0) {
-            var request = new XMLHttpRequest();
-            request.open("GET", "/go_stop", true);
-            request.send();
-            device.callFunction("stop");0
-        }
+
       });
     // document.addEventListener('keydown', (e) => {
     //   if (e.repeat) return;
