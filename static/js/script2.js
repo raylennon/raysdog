@@ -9,7 +9,7 @@ $( document ).ready(function() {
     document.addEventListener('keydown', function(event) {
 
         if (event.repeat) return;
-            var request = new XMLHttpRequest();
+        var request = new XMLHttpRequest();
 
         // Add the key to the keysPressed object
         keysPressed[event.key] = true;
@@ -33,6 +33,8 @@ $( document ).ready(function() {
         } else if (event.key === 'ArrowLeft') {
             request.open("GET", "/go_left", true);
         }
+        request.send();
+
       });
       
       document.addEventListener('keyup', function(event) {
