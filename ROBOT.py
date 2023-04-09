@@ -65,17 +65,19 @@ def gen(camera):
 def command(cmd=None):
     r = cmd.lower()
     if cmd=="forward":
-        motor3.throttle = -1
-        motor4.throttle = 1
+        motor3.throttle = 1
+        motor4.throttle = -1
     elif cmd=="stop":
         motor3.throttle = motor4.throttle = 0
     elif cmd=="back":
-        motor3.throttle = 1
-        motor4.throttle = -1
+        motor3.throttle = -1
+        motor4.throttle = 1
+
     elif cmd=="left":
-        motor3.throttle = motor4.throttle = -1
-    elif cmd=="right":
         motor3.throttle = motor4.throttle = 1
+
+    elif cmd=="right":
+    motor3.throttle = motor4.throttle = -1
 
     return r
 
