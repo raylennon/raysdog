@@ -13,7 +13,7 @@ $( document ).ready(function() {
 
         // Add the key to the keysPressed object
         keysPressed[event.key] = true;
-      
+        console.log(event.key);
         // Check which key or combination of keys was pressed
         if (keysPressed['ArrowUp'] && keysPressed['ArrowLeft']) {
             request.open("GET", "/go_fl", true);
