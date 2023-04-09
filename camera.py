@@ -31,6 +31,11 @@ class Camera(BaseCamera):
 
         while True:
             _, img = camera.read()
-            time.sleep(1/15)
+            # time.sleep(1)
+            scale_percent = 30 # percent of original size
+            width = int(img.shape[1] * scale_percent / 100)
+            height = int(img.shape[0] * scale_percent / 100)
+            dim = (width, height)
+            img = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
             # encode as a jpeg image and return it
             yield cv2.imencode('.jpg', img)[1].tobytes()
