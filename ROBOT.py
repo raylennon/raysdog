@@ -72,13 +72,22 @@ def command(cmd=None):
     elif cmd=="back":
         motor3.throttle = -1
         motor4.throttle = 1
-
     elif cmd=="left":
         motor3.throttle = motor4.throttle = 1
-
     elif cmd=="right":
         motor3.throttle = motor4.throttle = -1
-
+    elif cmd=="fl":
+        motor3.throttle = 1
+        motor4.throttle = 0
+    elif cmd=="fr":
+        motor3.throttle = 0
+        motor4.throttle = -1
+    elif cmd=="bl":
+        motor3.throttle = 0
+        motor4.throttle = 1
+    elif cmd=="br":
+        motor3.throttle = -1
+        motor4.throttle = 0
     return r
 
 @app.route('/video_feed')

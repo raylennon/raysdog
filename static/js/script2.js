@@ -16,28 +16,20 @@ $( document ).ready(function() {
       
         // Check which key or combination of keys was pressed
         if (keysPressed['ArrowUp'] && keysPressed['ArrowLeft']) {
-          // Make HTTP request for up and left arrow combination
-          console.log('Up and Left arrow combination pressed');
+            request.open("GET", "/go_fl", true);
         } else if (keysPressed['ArrowUp'] && keysPressed['ArrowRight']) {
-          // Make HTTP request for up and right arrow combination
-          console.log('Up and Right arrow combination pressed');
+            request.open("GET", "/go_fr", true);
         } else if (keysPressed['ArrowDown'] && keysPressed['ArrowLeft']) {
-          // Make HTTP request for down and left arrow combination
-          console.log('Down and Left arrow combination pressed');
+            request.open("GET", "/go_bl", true);
         } else if (keysPressed['ArrowDown'] && keysPressed['ArrowRight']) {
-          // Make HTTP request for down and right arrow combination
-          console.log('Down and Right arrow combination pressed');
+            request.open("GET", "/go_br", true);
         } else if (event.key === 'ArrowUp') {
-            device.callFunction("forward"); 
             request.open("GET", "/go_forward", true);
         } else if (event.key === 'ArrowDown') {
-            device.callFunction("forward"); 
             request.open("GET", "/go_back", true);
         } else if (event.key === 'ArrowRight') {
-            device.callFunction("forward"); 
             request.open("GET", "/go_right", true);
         } else if (event.key === 'ArrowLeft') {
-            device.callFunction("forward"); 
             request.open("GET", "/go_left", true);
         }
       });
