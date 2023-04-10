@@ -107,10 +107,10 @@ def imokay():
     return "okay"
 
 def check_for_timeout():
-    global last_command_time
-    global dontcheck
 
     while True:
+        global last_command_time
+        global dontcheck
         if (not dontcheck) and time.time() - last_command_time > 2: # check if the last command was more than 2 seconds ago
             motor3.throttle = motor4.throttle = 0
             dontcheck = True
