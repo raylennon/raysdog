@@ -82,16 +82,16 @@ def command(cmd=None):
         motor3.throttle = motor4.throttle = -1
     elif cmd=="fl":
         motor3.throttle = 1
-        motor4.throttle = 0
+        motor4.throttle = -0.2
     elif cmd=="fr":
-        motor3.throttle = 0
+        motor3.throttle = 0.2
         motor4.throttle = -1
     elif cmd=="bl":
-        motor3.throttle = 0
+        motor3.throttle = -0.2
         motor4.throttle = 1
     elif cmd=="br":
         motor3.throttle = -1
-        motor4.throttle = 0
+        motor4.throttle = 0.2
     last_command_time = time.time() # update the last command time
     return r
 
