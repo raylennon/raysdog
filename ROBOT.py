@@ -77,9 +77,11 @@ def command(cmd=None):
         motor3.throttle = -1
         motor4.throttle = -1
     elif cmd=="left":
-        motor3.throttle = motor4.throttle = -1
+        motor3.throttle = 1
+        motor4.throttle = -1
     elif cmd=="right":
-        motor3.throttle = motor4.throttle = 1
+        motor3.throttle = -1
+        motor4.throttle = 1
     elif cmd=="fl":
         motor3.throttle = 1
         motor4.throttle = 0.2
