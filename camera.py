@@ -18,9 +18,11 @@ class Camera(BaseCamera):
             Camera.set_video_source(int(os.environ['OPENCV_CAMERA_SOURCE']))
         super(Camera, self).__init__()
     
+    @staticmethod
     def set_resolution(val):
         global res
         res = val
+        return 0
     
     @staticmethod
     def set_video_source(source):
