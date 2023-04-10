@@ -70,28 +70,28 @@ def command(cmd=None):
     r = cmd.lower()
     if cmd=="forward":
         motor3.throttle = 1
-        motor4.throttle = -0.9
+        motor4.throttle = 0.9
     elif cmd=="stop":
         motor3.throttle = motor4.throttle = 0
     elif cmd=="back":
         motor3.throttle = -1
-        motor4.throttle = 1
+        motor4.throttle = -1
     elif cmd=="left":
-        motor3.throttle = motor4.throttle = 1
-    elif cmd=="right":
         motor3.throttle = motor4.throttle = -1
+    elif cmd=="right":
+        motor3.throttle = motor4.throttle = 1
     elif cmd=="fl":
         motor3.throttle = 1
-        motor4.throttle = -0.2
+        motor4.throttle = 0.2
     elif cmd=="fr":
         motor3.throttle = 0.2
-        motor4.throttle = -1
+        motor4.throttle = 1
     elif cmd=="bl":
         motor3.throttle = -0.2
-        motor4.throttle = 1
+        motor4.throttle = -1
     elif cmd=="br":
         motor3.throttle = -1
-        motor4.throttle = 0.2
+        motor4.throttle = -0.2
     last_command_time = time.time() # update the last command time
     return r
 
