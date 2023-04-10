@@ -17,7 +17,7 @@ import time
 import numpy as np
 import cv2
 import time
-
+import threading
 from board import SCL, SDA
 import busio
 
@@ -25,6 +25,7 @@ import busio
 #   https://github.com/adafruit/Adafruit_CircuitPython_PCA9685
 from adafruit_pca9685 import PCA9685
 from adafruit_motor import motor
+import time
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 i2c = busio.I2C(SCL, SDA)
@@ -61,8 +62,11 @@ def gen(camera):
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
+last_command_time = time.time()
+
 @app.route('/go_<cmd>')
 def command(cmd=None):
+    global last_command_time
     r = cmd.lower()
     if cmd=="forward":
         motor3.throttle = 1
@@ -88,7 +92,16 @@ def command(cmd=None):
     elif cmd=="br":
         motor3.throttle = -1
         motor4.throttle = 0
+    last_command_time = time.time() # update the last command time
     return r
+
+def check_for_timeout():
+    global last_command_time
+    if time.time() - last_command_time > 2: # check if the last command was more than 2 seconds ago
+        motor3.throttle = motor4.throttle = 0
+
+timeout_thread = threading.Thread(target=check_for_timeout)
+timeout_thread.start()
 
 @app.route('/video_feed')
 def video_feed():
