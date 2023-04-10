@@ -32,6 +32,8 @@ $( document ).ready(function() {
             request.open("GET", "/go_right", true);
         } else if (event.key === 'ArrowLeft') {
             request.open("GET", "/go_left", true);
+        } else {
+            return
         }
         request.send();
       });
@@ -67,6 +69,8 @@ $( document ).ready(function() {
             request.open("GET", "/go_right", true);
         } else if (keysPressed['ArrowLeft']) {
             request.open("GET", "/go_left", true);
+        } else {
+            return
         }
         request.send();
       });
