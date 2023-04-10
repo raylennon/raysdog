@@ -34,7 +34,6 @@ $( document ).ready(function() {
             request.open("GET", "/go_left", true);
         }
         request.send();
-
       });
       
       document.addEventListener('keyup', function(event) {
@@ -59,14 +58,14 @@ $( document ).ready(function() {
             request.open("GET", "/go_bl", true);
         } else if (keysPressed['ArrowDown'] && keysPressed['ArrowRight']) {
             request.open("GET", "/go_br", true);
-        } else if (event.key === 'ArrowUp') {
+        } else if (keysPressed['ArrowUp']) {
             request.open("GET", "/go_forward", true);
             console.log("Forward ho!!");
-        } else if (event.key === 'ArrowDown') {
+        } else if (keysPressed['ArrowDown']) {
             request.open("GET", "/go_back", true);
-        } else if (event.key === 'ArrowRight') {
+        } else if (keysPressed['ArrowRight']) {
             request.open("GET", "/go_right", true);
-        } else if (event.key === 'ArrowLeft') {
+        } else if (keysPressed['ArrowLeft']) {
             request.open("GET", "/go_left", true);
         }
         request.send();
