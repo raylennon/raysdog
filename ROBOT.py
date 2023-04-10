@@ -102,12 +102,12 @@ def check_for_timeout():
     global dontcheck
 
     while True:
-        time.sleep(1)
+        time.sleep(0.5)
         if (not dontcheck) and time.time() - last_command_time > 2: # check if the last command was more than 2 seconds ago
             motor3.throttle = motor4.throttle = 0
             dontcheck = True
             print("STOP.")
-        elif time.time() - last_command_time > 2:
+        elif time.time() - last_command_time > 0.5:
             dontcheck = False
 
 timeout_thread = threading.Thread(target=check_for_timeout)
