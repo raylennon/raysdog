@@ -7,8 +7,6 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Foliotek/AjaxQ/ajaxq.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/marcoschwartz/aREST.js/aREST.js"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='js/script2.js') }}"></script>
-
   <title>Ray's Dog</title>
   <div>
     <style>
@@ -21,7 +19,7 @@
       }
     </style>
   </div>
-  Resolution %: <input type="number" min="0" max="100" id="Resolution">
+  Resolution %: <input type="number" min="0" max="100" id="fname">
 </head>
 
 <body>
@@ -30,5 +28,5 @@
     <img src="{{ url_for('video_feed') }}">
   </div>
 </body>
-
+<script type="text/javascript" src="{{ url_for('static', filename='js/script2.js') }}"></script>
 </html>
