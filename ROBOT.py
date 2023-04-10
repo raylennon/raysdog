@@ -100,6 +100,11 @@ def command(cmd=None):
 dontcheck = False
 res = 30
 
+
+@app.route('/still_alive')
+def imokay():
+    last_command_time = time.time()
+
 def check_for_timeout():
     global last_command_time
     global dontcheck

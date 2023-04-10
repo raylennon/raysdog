@@ -8,7 +8,7 @@ $( document ).ready(function() {
 
     document.addEventListener('keydown', function(event) {
 
-        // if (event.repeat) return;
+        if (event.repeat) return;
         var request = new XMLHttpRequest();
 
         // Add the key to the keysPressed object
@@ -75,7 +75,12 @@ $( document ).ready(function() {
         request.send();
       });
 });
-
+function heartbeat() {
+    var request = new XMLHttpRequest();
+    request.open("GET", "/still_alive", true);
+    request.send();
+}
+const myInterval = setInterval(heartbeat, 200);
 
 var keysPressed = {}; // Keep track of which keys are currently pressed
 
