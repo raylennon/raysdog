@@ -79,6 +79,7 @@ var keysPressed = {}; // Keep track of which keys are currently pressed
 document.getElementById("Resolution").addEventListener("change", updateresolution);
 
 function updateresolution() {
+  console.log("WHAT!!")
   var res = document.getElementById("Resolution");
   var val = res.value;
   var request = new XMLHttpRequest();
