@@ -98,6 +98,7 @@ def command(cmd=None):
     return r
 
 dontcheck = False
+res = 30
 
 def check_for_timeout():
     global last_command_time
@@ -121,5 +122,9 @@ def video_feed():
     return Response(gen(Camera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@app.route('/res_<int:val>')
+def update_resolution(val):
+    Camera.set_resolution(val)
+    return
 if __name__ == '__main__':
     app.run(host='0.0.0.0', threaded=True, port=80)

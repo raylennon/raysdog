@@ -9,22 +9,26 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/marcoschwartz/aREST.js/aREST.js"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/script2.js') }}"></script>
 
-      <title>Ray's Dog</title>
+  <title>Ray's Dog</title>
+  <div>
+    <style>
+      .box img {
+        /* position: absolute; */
+        left: 10%;
+        width: 75%;
+        height: 80%;
+        object-fit: contain;
+      }
+    </style>
+  </div>
+  Resolution %: <input type="number" min="0" max="100" id="Resolution">
+</head>
 
-      <style>
-        .box img {
-          position: absolute;
-          left: 10%;  
-          width: 75%;
-            height: 80%;
-            object-fit: contain;
-        }
-      </style>
-  </head >
-      <body>
-        <div class="bg-image"></div>
-        <div class="box">
-          <img src="{{ url_for('video_feed') }}">
-        </div>
-      </body>
-</html >
+<body>
+  <div class="bg-image"></div>
+  <div class="box">
+    <img src="{{ url_for('video_feed') }}">
+  </div>
+</body>
+
+</html>

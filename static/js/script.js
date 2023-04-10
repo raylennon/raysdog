@@ -32,6 +32,7 @@ $( document ).ready(function() {
       var request = new XMLHttpRequest();
       request.open("GET", "/go_stop", true);
       request.send();
-      device.callFunction("stop");0
+      device.callFunction("stop");
     });
 });
+

@@ -74,3 +74,14 @@ $( document ).ready(function() {
 
 
 var keysPressed = {}; // Keep track of which keys are currently pressed
+
+
+document.getElementById("Resolution").addEventListener("change", updateresolution);
+
+function updateresolution() {
+  var res = document.getElementById("Resolution");
+  var val = res.value;
+  var request = new XMLHttpRequest();
+  request.open("GET", "/res_"+val, true);
+  request.send();
+}
