@@ -8,25 +8,23 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Foliotek/AjaxQ/ajaxq.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/marcoschwartz/aREST.js/aREST.js"></script>
   <title>Ray's Dog</title>
-  <div>
-    <style>
-      .box img {
-        /* position: absolute; */
-        left: 10%;
-        width: 75%;
-        height: 80%;
-        object-fit: contain;
-      }
-    </style>
-  </div>
-  Resolution %: <input type="number" min="0" max="100" id="fname" value="30">
+  <style>
+    .box img {
+      /* position: absolute; */
+      left: 10%;
+      width: 75%;
+      height: 80%;
+      object-fit: contain;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="bg-image"></div>
   <div class="box">
     <img src="{{ url_for('video_feed') }}">
   </div>
+  Resolution %: <input type="number" min="0" max="100" id="fname" value="30">
 </body>
 <script type="text/javascript" src="{{ url_for('static', filename='js/script2.js') }}"></script>
+
 </html>
