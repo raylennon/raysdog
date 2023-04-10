@@ -97,8 +97,9 @@ def command(cmd=None):
 
 def check_for_timeout():
     global last_command_time
-    if time.time() - last_command_time > 2: # check if the last command was more than 2 seconds ago
-        motor3.throttle = motor4.throttle = 0
+    while True:
+        if time.time() - last_command_time > 2: # check if the last command was more than 2 seconds ago
+            motor3.throttle = motor4.throttle = 0
 
 timeout_thread = threading.Thread(target=check_for_timeout)
 timeout_thread.start()
