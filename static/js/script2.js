@@ -8,7 +8,7 @@ $( document ).ready(function() {
 
     document.addEventListener('keydown', function(event) {
 
-        if (event.repeat) return;
+        // if (event.repeat) return;
         var request = new XMLHttpRequest();
 
         // Add the key to the keysPressed object
