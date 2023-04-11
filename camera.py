@@ -46,5 +46,6 @@ class Camera(BaseCamera):
             height = int(img.shape[0] * scale_percent / 100)
             dim = (width, height)
             img = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+            img = cv2.rotate(img, cv2.ROTATE_180)
             # encode as a jpeg image and return it
             yield cv2.imencode('.jpg', img)[1].tobytes()
