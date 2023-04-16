@@ -80,7 +80,7 @@ function heartbeat() {
     request.open("GET", "/still_alive", true);
     request.send();
 }
-const myInterval = setInterval(heartbeat, 200);
+const myInterval = setInterval(heartbeat, 800);
 
 var keysPressed = {}; // Keep track of which keys are currently pressed
 
