@@ -15,22 +15,22 @@ $( document ).ready(function() {
         keysPressed[event.key] = true;
         console.log(event.key);
         // Check which key or combination of keys was pressed
-        if ((keysPressed['ArrowUp'] || keysPressed['W']) && (keysPressed['ArrowLeft'] || keysPressed['A'])) {
+        if ((keysPressed['ArrowUp'] || keysPressed['w']) && (keysPressed['ArrowLeft'] || keysPressed['a'])) {
             request.open("GET", "/go_fl", true);
-        } else if ((keysPressed['ArrowUp'] || keysPressed['W']) && (keysPressed['ArrowRight'] || keysPressed['D'])) {
+        } else if ((keysPressed['ArrowUp'] || keysPressed['w']) && (keysPressed['ArrowRight'] || keysPressed['d'])) {
             request.open("GET", "/go_fr", true);
-        } else if ((keysPressed['ArrowDown'] || keysPressed['S']) && (keysPressed['ArrowLeft'] || keysPressed['A'])) {
+        } else if ((keysPressed['ArrowDown'] || keysPressed['s']) && (keysPressed['ArrowLeft'] || keysPressed['a'])) {
             request.open("GET", "/go_bl", true);
-        } else if ((keysPressed['ArrowDown'] || keysPressed['S']) && (keysPressed['ArrowRight'] || keysPressed['D'])) {
+        } else if ((keysPressed['ArrowDown'] || keysPressed['s']) && (keysPressed['ArrowRight'] || keysPressed['d'])) {
             request.open("GET", "/go_br", true);
-        } else if (event.key === 'ArrowUp' || event.key === 'W') {
+        } else if (event.key === 'ArrowUp' || event.key === 'w') {
             request.open("GET", "/go_forward", true);
             console.log("Forward ho!!");
-        } else if (event.key === 'ArrowDown' || event.key === 'S') {
+        } else if (event.key === 'ArrowDown' || event.key === 's') {
             request.open("GET", "/go_back", true);
-        } else if (event.key === 'ArrowRight' || event.key === 'A') {
+        } else if (event.key === 'ArrowRight' || event.key === 'a') {
             request.open("GET", "/go_right", true);
-        } else if (event.key === 'ArrowLeft'  || event.key === 'D') {
+        } else if (event.key === 'ArrowLeft'  || event.key === 'd') {
             request.open("GET", "/go_left", true);
         } else {
             return
@@ -52,22 +52,22 @@ $( document ).ready(function() {
 
         console.log(event.key);
         // Check which key or combination of keys was pressed
-        if ((keysPressed['ArrowUp'] || keysPressed['W']) && (keysPressed['ArrowLeft'] || keysPressed['A'])) {
+        if ((keysPressed['ArrowUp'] || keysPressed['w']) && (keysPressed['ArrowLeft'] || keysPressed['a'])) {
             request.open("GET", "/go_fl", true);
-        } else if ((keysPressed['ArrowUp'] || keysPressed['W']) && (keysPressed['ArrowRight'] || keysPressed['D'])) {
+        } else if ((keysPressed['ArrowUp'] || keysPressed['w']) && (keysPressed['ArrowRight'] || keysPressed['d'])) {
             request.open("GET", "/go_fr", true);
-        } else if ((keysPressed['ArrowDown'] || keysPressed['S']) && (keysPressed['ArrowLeft'] || keysPressed['A'])) {
+        } else if ((keysPressed['ArrowDown'] || keysPressed['s']) && (keysPressed['ArrowLeft'] || keysPressed['a'])) {
             request.open("GET", "/go_bl", true);
-        } else if ((keysPressed['ArrowDown'] || keysPressed['S']) && (keysPressed['ArrowRight'] || keysPressed['D'])) {
+        } else if ((keysPressed['ArrowDown'] || keysPressed['s']) && (keysPressed['ArrowRight'] || keysPressed['d'])) {
             request.open("GET", "/go_br", true);
-        } else if ((keysPressed['ArrowUp'] || keysPressed['W'])) {
+        } else if ((keysPressed['ArrowUp'] || keysPressed['w'])) {
             request.open("GET", "/go_forward", true);
             console.log("Forward ho!!");
-        } else if ((keysPressed['ArrowDown'] || keysPressed['S'])) {
+        } else if ((keysPressed['ArrowDown'] || keysPressed['s'])) {
             request.open("GET", "/go_back", true);
-        } else if ((keysPressed['ArrowRight'] || keysPressed['D'])) {
+        } else if ((keysPressed['ArrowRight'] || keysPressed['d'])) {
             request.open("GET", "/go_right", true);
-        } else if ((keysPressed['ArrowLeft'] || keysPressed['A'])) {
+        } else if ((keysPressed['ArrowLeft'] || keysPressed['a'])) {
             request.open("GET", "/go_left", true);
         } else {
             return
