@@ -17,11 +17,11 @@ $( document ).ready(function() {
         // Check which key or combination of keys was pressed
         if ((keysPressed['ArrowUp'] || keysPressed['w']) && (keysPressed['ArrowLeft'] || keysPressed['a'])) {
             request.open("GET", "/go_fl", true);
-        } else if ((keysPressed['ArrowUp'] || keysPressed['w']) && (keysPressed['ArrowRight'] || keysPressed['d'])) {
+        } else if ((keysPressed['ArrowUp'] || keysPressed['w']) && (keysPressed['ArrowRight'] || keysPressed['a'])) {
             request.open("GET", "/go_fr", true);
         } else if ((keysPressed['ArrowDown'] || keysPressed['s']) && (keysPressed['ArrowLeft'] || keysPressed['a'])) {
             request.open("GET", "/go_bl", true);
-        } else if ((keysPressed['ArrowDown'] || keysPressed['s']) && (keysPressed['ArrowRight'] || keysPressed['d'])) {
+        } else if ((keysPressed['ArrowDown'] || keysPressed['s']) && (keysPressed['ArrowRight'] || keysPressed['a'])) {
             request.open("GET", "/go_br", true);
         } else if (event.key === 'ArrowUp' || event.key === 'w') {
             request.open("GET", "/go_forward", true);
@@ -30,7 +30,7 @@ $( document ).ready(function() {
             request.open("GET", "/go_back", true);
         } else if (event.key === 'ArrowRight' || event.key === 'a') {
             request.open("GET", "/go_right", true);
-        } else if (event.key === 'ArrowLeft'  || event.key === 'd') {
+        } else if (event.key === 'ArrowLeft'  || event.key === 'a') {
             request.open("GET", "/go_left", true);
         } else {
             return
@@ -54,18 +54,18 @@ $( document ).ready(function() {
         // Check which key or combination of keys was pressed
         if ((keysPressed['ArrowUp'] || keysPressed['w']) && (keysPressed['ArrowLeft'] || keysPressed['a'])) {
             request.open("GET", "/go_fl", true);
-        } else if ((keysPressed['ArrowUp'] || keysPressed['w']) && (keysPressed['ArrowRight'] || keysPressed['d'])) {
+        } else if ((keysPressed['ArrowUp'] || keysPressed['w']) && (keysPressed['ArrowRight'] || keysPressed['a'])) {
             request.open("GET", "/go_fr", true);
         } else if ((keysPressed['ArrowDown'] || keysPressed['s']) && (keysPressed['ArrowLeft'] || keysPressed['a'])) {
             request.open("GET", "/go_bl", true);
-        } else if ((keysPressed['ArrowDown'] || keysPressed['s']) && (keysPressed['ArrowRight'] || keysPressed['d'])) {
+        } else if ((keysPressed['ArrowDown'] || keysPressed['s']) && (keysPressed['ArrowRight'] || keysPressed['a'])) {
             request.open("GET", "/go_br", true);
         } else if ((keysPressed['ArrowUp'] || keysPressed['w'])) {
             request.open("GET", "/go_forward", true);
             console.log("Forward ho!!");
         } else if ((keysPressed['ArrowDown'] || keysPressed['s'])) {
             request.open("GET", "/go_back", true);
-        } else if ((keysPressed['ArrowRight'] || keysPressed['d'])) {
+        } else if ((keysPressed['ArrowRight'] || keysPressed['a'])) {
             request.open("GET", "/go_right", true);
         } else if ((keysPressed['ArrowLeft'] || keysPressed['a'])) {
             request.open("GET", "/go_left", true);
