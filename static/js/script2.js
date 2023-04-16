@@ -94,3 +94,35 @@ function updateresolution() {
   request.open("GET", "/res_"+val, true);
   request.send();
 }
+
+function handleUpButtonPressed() {
+    // code to handle when up button is pressed
+  }
+  
+  function handleUpButtonReleased() {
+    // code to handle when up button is released
+  }
+  
+  function handleLeftButtonPressed() {
+    // code to handle when left button is pressed
+  }
+  
+  function handleLeftButtonReleased() {
+    // code to handle when left button is released
+  }
+  
+  function handleDownButtonPressed() {
+    // code to handle when down button is pressed
+  }
+  
+  function handleDownButtonReleased() {
+    // code to handle when down button is released
+  }
+  
+  function handleRightButtonPressed() {
+    // code to handle when right button is pressed
+  }
+  
+  function handleRightButtonReleased() {
+    // code to handle when right button is released
+  }
