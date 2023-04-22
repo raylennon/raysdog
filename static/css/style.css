@@ -1,124 +1,131 @@
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
+/* Set the height of the body and html to 100% */
+html,
 body {
-  background: #fff;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-div::not(.bg-image):not(.box){
-  padding: 0;
-  margin: 0;
-  width: 3em;
-  height: 3em;
-  position: absolute;
+.disable-dbl-tap-zoom {
+    touch-action: manipulation;
 }
 
-.wrapper {
-  position: absolute;
-  height: 9em;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  filter: drop-shadow(7px 5px 5px #777);
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-.center {
-  z-index: 2;
-  top: 3em;
+button {
+    /* width: 50%; */
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid black;
+    font-size: 28px;
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 60px;
 }
 
-.center-circle {
-  position: static;
-/*   background: #222532; */
-  background: #777;
-/*   background: #90E4FF; */
-/*   background: #7FFFB5; */
-  border-radius: 100%;
-  margin: auto;
-  width: 75%;
-  height: 75%;
-  z-index: 3;
+/* Set the widths and heights of the divs based on screen size */
+@media screen and (orientation: landscape) {
+
+    /* For landscape orientation */
+    #div1 {
+        width: 70%;
+        height: 100%;
+        float: left;
+    }
+
+    #div2 {
+        width: 30%;
+        height: 100%;
+        float: left;
+    }
+
+    #arrow-buttons {
+        /* display: flex; */
+        position: relative;
+        /* top: 20%; */
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100;
+        height: 300px;
+    }
+
+
+    #up,
+    #down {
+        width: 30%;
+        height: 30%
+    }
 }
 
-.up,
-.right,
-.down,
-.left,
-.center {
-  display: flex;
-  background: #000;
-  padding: 12px;
-  border: 1px solid #222;
-/*   background: #51D6FF; */
-/*   background: #37FF8B; */
+@media screen and (orientation: portrait) {
+
+    /* For portrait orientation */
+    #div1 {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    #div2 {
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        position: absolute;
+    }
+
+    #arrow-buttons {
+        /* display: flex; */
+        position: absolute;
+        /* top: 20%; */
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    button {
+        opacity: 0.2;
+        border-radius: 0;
+    }
+
+    #up,
+    #down {
+        width: 100%;
+        height: 30%
+    }
+
 }
 
-.right {
-  top: 3em;
-  left: 3em;
+
+#left,
+#right {
+    width: 50%;
+    height: 100%;
+    position: relative;
 }
 
-.left {
-  top: 3em;
-  right: 3em;
+#left {
+    margin-right: 10px;
 }
 
-.down {
-  top: 6em;
-}
+#lr-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
 
-.up-triangle {
-  position: absolute;
-  bottom: 16px;
-  right: 8px;
-  margin: auto;
-  width: 65%;
-  height: 65%;
-  border-left: solid 15px transparent; 
-  border-right: solid 15px transparent; 
-  border-bottom: solid 20px #777; 
-}
-
-.right-triangle {
-  position: absolute;
-  bottom: 8px;
-  right: 0px;
-  margin: auto;
-  width: 65%;
-  height: 65%;
-  border-left: solid 15px transparent; 
-  border-right: solid 15px transparent; 
-  border-bottom: solid 20px #777;
-  transform: rotate(90deg);
-}
-
-.down-triangle {
-  position: absolute;
-  bottom: 0px;
-  right: 8px;
-  margin: auto;
-  width: 65%;
-  height: 65%;
-  border-left: solid 15px transparent; 
-  border-right: solid 15px transparent; 
-  border-bottom: solid 20px #777;
-  transform: rotate(180deg);
-}
-
-.left-triangle {
-  position: absolute;
-  bottom: 8px;
-  left: 1px;
-  margin: auto;
-  width: 65%;
-  height: 65%;
-  border-left: solid 15px transparent; 
-  border-right: solid 15px transparent; 
-  border-bottom: solid 20px #777;
-  transform: rotate(-90deg);
 }
