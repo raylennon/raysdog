@@ -45,7 +45,7 @@ def gen(camera):
 @app.route("/webhook", methods=["POST"])
 def handle_webhook():
     data = request.get_json()
-    if (data.command == "dir"):
+    if (data['command'] == "dir"):
         throttles = {
             "STOP": (0, 0),
             "U": (1, 1),
@@ -57,8 +57,8 @@ def handle_webhook():
             "LD": (-0.2, -1),
             "RD": (-1, -0.2)
         }
-        if data.direction in throttles:
-            motor3.throttle, motor4.throttle = throttles[data.direction]
+        if data['direction'] in throttles:
+            motor3.throttle, motor4.throttle = throttles[data['direction']]
             return "", 204
 
 
