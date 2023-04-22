@@ -1,7 +1,7 @@
 const buttons = document.querySelectorAll("button");
 const pressedKeys = { left: false, up: false, right: false, down: false };
 
-function directionUpdate(id, down) {
+function handlePress(id, down) {
   const button = document.querySelector(`#${id}`);
   if (pressedKeys[id] !== down) {
     pressedKeys[id] = down;
@@ -11,23 +11,23 @@ function directionUpdate(id, down) {
 }
 
 buttons.forEach((button) => {
-  button.addEventListener("mousedown", () => directionUpdate(button.id, true));
-  button.addEventListener("touchstart", () => directionUpdate(button.id, true));
-  button.addEventListener("mouseup", () => directionUpdate(button.id, false));
-  button.addEventListener("touchend", () => directionUpdate(button.id, false));
+  button.addEventListener("mousedown", () => handlePress(button.id, true));
+  button.addEventListener("touchstart", () => handlePress(button.id, true));
+  button.addEventListener("mouseup", () => handlePress(button.id, false));
+  button.addEventListener("touchend", () => handlePress(button.id, false));
 });
 
 document.addEventListener("keydown", (event) => {
   const id = { "ArrowLeft": "left", "ArrowUp": "up", "ArrowRight": "right", "ArrowDown": "down" }[event.key];
   if (id && !pressedKeys[id]) {
-    directionUpdate(id, true);
+    handlePress(id, true);
   }
 });
 
 document.addEventListener("keyup", (event) => {
   const id = { "ArrowLeft": "left", "ArrowUp": "up", "ArrowRight": "right", "ArrowDown": "down" }[event.key];
   if (id && pressedKeys[id]) {
-    directionUpdate(id, false);
+    handlePress(id, false);
   }
 });
 
