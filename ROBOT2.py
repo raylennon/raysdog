@@ -59,7 +59,7 @@ def handle_webhook():
         }
         if data['direction'] in throttles:
             motor3.throttle, motor4.throttle = throttles[data['direction']]
-            return "", 204
+    return "", 204
 
 
 @app.route('/video_feed')
