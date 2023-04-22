@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Set the height of the body and html to 100% */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Set the background color of the two divs */
+        #div1 {
+            /* background-color: #f0f0f0; */
+        }
+
+        #div2 {
+            /* background-color: #d0d0d0; */
+        }
+
+        button {
+            /* width: 50%; */
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid black;
+            font-size: 28px;
+            font-weight: bold;
+            background-color: white;
+            color: black;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 60px;
+        }
+
+        /* Set the widths and heights of the divs based on screen size */
+        @media screen and (orientation: landscape) {
+
+            /* For landscape orientation */
+            #div1 {
+                width: 70%;
+                height: 100%;
+                float: left;
+            }
+
+            #div2 {
+                width: 30%;
+                height: 100%;
+                float: left;
+            }
+
+            #arrow-buttons {
+                /* display: flex; */
+                position: relative;
+                /* top: 20%; */
+                text-align: center;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100;
+                height: 100%;
+            }
+        }
+
+        @media screen and (orientation: portrait) {
+
+            /* For portrait orientation */
+            #div1 {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+            }
+
+            #div2 {
+                width: 100%;
+                height: 100%;
+                bottom: 0;
+                position: absolute;
+            }
+
+            #arrow-buttons {
+                /* display: flex; */
+                position: relative;
+                /* top: 20%; */
+                text-align: center;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+            }
+
+            button {
+                opacity: 0.2;
+            }
+
+        }
+
+        #up,
+        #down {
+            width: 30%;
+            /* position: relative; */
+        }
+
+        #left,
+        #right {
+            width: 150px;
+            position: relative;
+        }
+
+        #left {
+            margin-right: 10px;
+        }
+
+        #lr-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Create two divs to cover the entire screen -->
+    <div id="div1">
+        <img style="
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          "
+            src="https://images.immediate.co.uk/production/volatile/sites/23/2023/01/Giant-panda-c2c51b8.jpg?quality=90&webp=true&resize=1500,1001">
+    </div>
+    <div id="div2">
+        <div id="arrow-buttons">
+            <button id="up" ontouchstart="handleUpButtonPressed()" ontouchend="handleUpButtonReleased()">↑</button>
+            <div id="lr-buttons">
+                <button id="left" ontouchstart="handleLeftButtonPressed()"
+                    ontouchend="handleLeftButtonReleased()">←</button>
+                <button id="right" ontouchstart="handleRightButtonPressed()"
+                    ontouchend="handleRightButtonReleased()">→</button>
+            </div>
+            <button id="down" ontouchstart="handleDownButtonPressed()"
+                ontouchend="handleDownButtonReleased()">↓</button>
+        </div>
+    </div>
+</body>
+<script src="commands.js"></script>
+
+</html>
