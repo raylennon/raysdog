@@ -134,12 +134,15 @@
     </div>
     <div id="div2">
         <div id="arrow-buttons">
-            <button id="up">↑</button>
+            <button id="up" ontouchstart="handleUpButtonPressed()" ontouchend="handleUpButtonReleased()">↑</button>
             <div id="lr-buttons">
-                <button id="left">←</button>
-                <button id="right">→</button>
+                <button id="left" ontouchstart="handleLeftButtonPressed()"
+                    ontouchend="handleLeftButtonReleased()">←</button>
+                <button id="right" ontouchstart="handleRightButtonPressed()"
+                    ontouchend="handleRightButtonReleased()">→</button>
             </div>
-            <button id="down">↓</button>
+            <button id="down" ontouchstart="handleDownButtonPressed()"
+                ontouchend="handleDownButtonReleased()">↓</button>
         </div>
     </div>
 </body>
