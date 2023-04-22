@@ -53,4 +53,4 @@ function directionUpdate(id, down) {
     },
     body: JSON.stringify(data),
   });
-}
+} 
