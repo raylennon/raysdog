@@ -11,6 +11,19 @@
             padding: 0;
         }
 
+        .disable-dbl-tap-zoom {
+            touch-action: manipulation;
+        }
+
+        .unselectable {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
         button {
             /* width: 50%; */
             height: 100px;
@@ -93,6 +106,7 @@
                 opacity: 0.2;
                 border-radius: 0;
             }
+
             #up,
             #down {
                 width: 100%;
@@ -135,12 +149,12 @@
     </div>
     <div id="div2">
         <div id="arrow-buttons">
-            <button id="up">↑</button>
+            <button id="up" class="unselectable disable-dbl-tap-zoom">↑</button>
             <div id="lr-buttons">
-                <button id="left">←</button>
-                <button id="right">→</button>
+                <button id="left" class="unselectable disable-dbl-tap-zoom">←</button>
+                <button id="right" class="unselectable disable-dbl-tap-zoom">→</button>
             </div>
-            <button id="down">↓</button>
+            <button id="down" class="unselectable disable-dbl-tap-zoom">↓</button>
         </div>
     </div>
 </body>
