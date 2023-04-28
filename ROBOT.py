@@ -74,6 +74,7 @@ def handle_webhook():
             lcd.text(t2,2)
         else:
             lcd.text(data['text'],1)
+        return "", 204
 
 
 @app.route('/video_feed')
