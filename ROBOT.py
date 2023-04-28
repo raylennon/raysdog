@@ -66,6 +66,7 @@ def handle_webhook():
             motor3.throttle, motor4.throttle = throttles[data['direction']]
             return "", 204
     elif (data['command'] == 'display'):
+        lcd.clear()
         text = data['text']
         if len(text)>16:
             t1 = text[:16]
