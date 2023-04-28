@@ -21,6 +21,8 @@ i2c = busio.I2C(SCL, SDA)
 from signal import signal, SIGTERM, SIGHUP, pause
 from rpi_lcd import LCD
 lcd = LCD()
+lcd.clear()
+lcd.text("    0   0    ",1)
 
 pca = PCA9685(i2c, address=0x60)
 pca.frequency = 100
