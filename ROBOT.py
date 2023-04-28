@@ -66,7 +66,7 @@ def handle_webhook():
             motor3.throttle, motor4.throttle = throttles[data['direction']]
             return "", 204
     elif (data['command'] == 'display'):
-        lcd.text(data.text)
+        lcd.text(data['text'])
 
 
 @app.route('/video_feed')
