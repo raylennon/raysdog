@@ -6,6 +6,9 @@ body {
     padding: 0;
 }
 
+input {
+    font-size:large;
+}
 .disable-dbl-tap-zoom {
     touch-action: manipulation;
 }
@@ -47,6 +50,7 @@ button {
         width: 30%;
         height: 100%;
         float: left;
+        text-align: center;
     }
 
     #arrow-buttons {
