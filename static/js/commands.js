@@ -56,7 +56,7 @@ function directionUpdate(id, down) {
 }
 
 const inputBox = document.getElementById('Display');
-inputBox.addEventListener('input', () => {
+inputBox.addEventListener('change', () => {
   const data = {
     command: 'display',
     text: inputBox.value
