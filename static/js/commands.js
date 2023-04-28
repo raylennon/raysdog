@@ -34,12 +34,12 @@ document.addEventListener("keyup", (event) => {
 function directionUpdate(id, down) {
   // console.log(`Button ${id} was ${down ? "pressed" : "released"}`);
   // console.log(pressedKeys);
-  let dir = ""; const baseUrl=dir;
-  if (pressedKeys.left) {dir += "L";}
-  if (pressedKeys.right) {dir += "R";}
-  if (pressedKeys.up) {dir += "U";}
-  if (pressedKeys.down) {dir += "D";}
-  if (dir === baseUrl) {dir += "STOP";}
+  let dir = ""; const baseUrl = dir;
+  if (pressedKeys.left) { dir += "L"; }
+  if (pressedKeys.right) { dir += "R"; }
+  if (pressedKeys.up) { dir += "U"; }
+  if (pressedKeys.down) { dir += "D"; }
+  if (dir === baseUrl) { dir += "STOP"; }
 
   const data = {
     command: 'dir',
@@ -53,4 +53,19 @@ function directionUpdate(id, down) {
     },
     body: JSON.stringify(data),
   });
-} 
+}
+
+const inputBox = document.getElementById('Display');
+inputBox.addEventListener('input', () => {
+  const data = {
+    command: 'display',
+    text: inputBox.value
+  };
+  fetch("/webhook", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+});

@@ -17,6 +17,11 @@ from adafruit_motor import motor
 
 i2c = busio.I2C(SCL, SDA)
 
+
+from signal import signal, SIGTERM, SIGHUP, pause
+from rpi_lcd import LCD
+lcd = LCD()
+
 pca = PCA9685(i2c, address=0x60)
 pca.frequency = 100
 
@@ -60,6 +65,8 @@ def handle_webhook():
         if data['direction'] in throttles:
             motor3.throttle, motor4.throttle = throttles[data['direction']]
             return "", 204
+    elif (data['command'] == 'display'):
+        lcd.text(data.text)
 
 
 @app.route('/video_feed')
