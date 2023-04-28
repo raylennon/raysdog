@@ -7,6 +7,7 @@ body {
 }
 
 input {
+    padding-top: 20px;
     font-size:large;
 }
 .disable-dbl-tap-zoom {
