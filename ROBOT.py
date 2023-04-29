@@ -49,10 +49,28 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+import random
+pin = random.randint(1000, 9999)
 
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        user_pin = request.form['pin']
+        if user_pin == str(pin):
+            return render_template('index.html')
+        else:
+            return render_template('login.html', error=True)
+    else:
+        return render_template('login.html', error=False)
+
+@app.route('/drive')
+def drive():
+    # Check that the user has entered a valid PIN before allowing access
+    if request.args.get('pin') == str(pin):
+        return render_template('index.html')
+    else:
+        return render_template('login.html', error=True)
 
 def gen(camera):
     while True:
@@ -112,7 +130,7 @@ def video_feed():
     return Response(gen(Camera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
-
 if __name__ == '__main__':
     print("Starting!!")
+    print(f'Current PIN: {pin}')
     app.run(host='0.0.0.0', threaded=True, port=80)
