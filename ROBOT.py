@@ -15,6 +15,10 @@ import busio
 from adafruit_pca9685 import PCA9685
 from adafruit_motor import motor
 
+import logging
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
+
 i2c = busio.I2C(SCL, SDA)
 
 
@@ -22,7 +26,7 @@ from signal import signal, SIGTERM, SIGHUP, pause
 from rpi_lcd import LCD
 lcd = LCD()
 lcd.clear()
-default = "    V o . o V       |   ^   |"
+default = "    U o . o U       ]   ^   ["
 lcd.text(default[:16],1)
 lcd.text(default[16:],2)
 
