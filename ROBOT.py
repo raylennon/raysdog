@@ -22,8 +22,9 @@ from signal import signal, SIGTERM, SIGHUP, pause
 from rpi_lcd import LCD
 lcd = LCD()
 lcd.clear()
-lcd.text("     .   .",1)
-lcd.text("       w",2)
+default = "    V o . o V       |   ^   |"
+lcd.text(default[:16],1)
+lcd.text(default[16:],2)
 
 pca = PCA9685(i2c, address=0x60)
 pca.frequency = 100
