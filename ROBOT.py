@@ -89,7 +89,7 @@ def handle_webhook():
         time_since_last_request = current_time - last_request_time
         
         if time_since_last_request < delay:
-            time.sleep(delay - time_since_last_request)
+            return "",204
 
         lcd.clear()
         text = data['text']
