@@ -15,6 +15,8 @@ import busio
 from adafruit_pca9685 import PCA9685
 from adafruit_motor import motor
 
+import time
+
 import logging
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
@@ -58,6 +60,9 @@ def gen(camera):
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
+last_request_time = 0
+delay = 0.1  # set the desired delay between requests in seconds
+
 
 @app.route("/webhook", methods=["POST"])
 def handle_webhook():
@@ -78,7 +83,14 @@ def handle_webhook():
             motor3.throttle, motor4.throttle = throttles[data['direction']]
             return "", 204
     elif (data['command'] == 'display'):
-        print(data['text'])
+
+        global last_request_time
+        current_time = time.monotonic()
+        time_since_last_request = current_time - last_request_time
+        
+        if time_since_last_request < delay:
+            time.sleep(delay - time_since_last_request)
+
         lcd.clear()
         text = data['text']
         if len(text)>16:
@@ -88,6 +100,10 @@ def handle_webhook():
             lcd.text(t2,2)
         else:
             lcd.text(data['text'],1)
+        
+        last_request_time = current_time
+
+
         return "", 204
 
 
