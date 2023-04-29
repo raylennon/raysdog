@@ -61,7 +61,7 @@ def gen(camera):
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 last_request_time = 0
-delay = 0.1  # set the desired delay between requests in seconds
+delay = 0.3  # set the desired delay between requests in seconds
 
 
 @app.route("/webhook", methods=["POST"])
