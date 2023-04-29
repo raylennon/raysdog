@@ -16,8 +16,16 @@ from adafruit_pca9685 import PCA9685
 from adafruit_motor import motor
 
 import time
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--secure', action='store_true', help='use secure login')
+args = parser.parse_args()
 
 import logging
+
+secure = False
+
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
@@ -55,15 +63,17 @@ pin = random.randint(1000, 9999)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
-        user_pin = request.form['pin']
-        if user_pin == str(pin):
-            return render_template('index.html')
+    if args.secure:
+        if request.method == 'POST':
+            user_pin = request.form['pin']
+            if user_pin == str(pin):
+                return render_template('index.html')
+            else:
+                return render_template('login.html', error=True)
         else:
-            return render_template('login.html', error=True)
+            return render_template('login.html', error=False)
     else:
-        return render_template('login.html', error=False)
-
+        return render_template('index.html')
 @app.route('/drive')
 def drive():
     # Check that the user has entered a valid PIN before allowing access
@@ -99,7 +109,7 @@ def handle_webhook():
         }
         if data['direction'] in throttles:
             motor3.throttle, motor4.throttle = throttles[data['direction']]
-            return "", 204
+        return "", 204
     elif (data['command'] == 'display'):
 
         global last_request_time
