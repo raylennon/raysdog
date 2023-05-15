@@ -143,4 +143,4 @@ def video_feed():
 if __name__ == '__main__':
     print("Starting!!")
     print(f'Current PIN: {pin}')
-    app.run(host='0.0.0.0', threaded=True, port=80)
+    app.run(host='0.0.0.0', threaded=True, port=8080)
