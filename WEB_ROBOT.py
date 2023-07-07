@@ -73,7 +73,7 @@ def on_server_message(new_status):
             motor3.throttle, motor4.throttle = throttles[new_status['direction']]
 
     if not new_status['message'] == status['message']:
-
+        print("MESSAGE UPDATE")
         lcd.clear()
         text = new_status['message']
         if len(text) > 16:
@@ -99,7 +99,7 @@ def connect():  # heartbeat
         elif status["mode"] == "awake":
             i += 1
             sio.emit('client-message', status)
-            print('Sent to server:', status)
+            # print('Sent to server:', status)
             sio.sleep(0.1)
         else:
             sio.disconnect()
