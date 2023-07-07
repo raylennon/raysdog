@@ -93,6 +93,7 @@ def connect():  # heartbeat
     while i >-1:# 1000:
         i += 1
         if status["mode"] == "asleep":
+            lcd.backlight(False)
             sio.emit('client-message', status)
             print("zzz")
             sio.sleep(2)
