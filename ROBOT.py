@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from importlib import import_module
 import os
-from flask import Flask, render_template, Response, request, send_from_directory
 
 if os.environ.get('CAMERA'):
     Camera = import_module('camera_' + os.environ['CAMERA']).Camera
@@ -16,11 +15,7 @@ from adafruit_pca9685 import PCA9685
 from adafruit_motor import motor
 
 import time
-import argparse
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--secure', action='store_true', help='use secure login')
-args = parser.parse_args()
 
 import logging
 
@@ -60,27 +55,6 @@ def favicon():
 import random
 pin = random.randint(1000, 9999)
 
-
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    if args.secure:
-        if request.method == 'POST':
-            user_pin = request.form['pin']
-            if user_pin == str(pin):
-                return render_template('index.html')
-            else:
-                return render_template('login.html', error=True)
-        else:
-            return render_template('login.html', error=False)
-    else:
-        return render_template('index.html')
-@app.route('/drive')
-def drive():
-    # Check that the user has entered a valid PIN before allowing access
-    if request.args.get('pin') == str(pin):
-        return render_template('index.html')
-    else:
-        return render_template('login.html', error=True)
 
 def gen(camera):
     while True:

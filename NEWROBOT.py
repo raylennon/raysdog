@@ -42,6 +42,6 @@ def disconnect():
     print('Disconnected from server.')
 
 
-sio.connect('http://raysdog.com:8765')
-# sio.connect('http://localhost:8765/')
+# sio.connect('http://raysdog.com:8765')
+sio.connect('http://localhost:8765/')
 sio.wait()
