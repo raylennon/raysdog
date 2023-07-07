@@ -90,7 +90,7 @@ def on_server_message(new_status):
 def connect():  # heartbeat
     global status
     i = 0
-    while i < 1000:
+    while i >-1:# 1000:
         i += 1
         if status["mode"] == "asleep":
             sio.emit('client-message', status)
