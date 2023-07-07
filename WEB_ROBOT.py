@@ -100,7 +100,7 @@ def connect():  # heartbeat
             i += 1
             sio.emit('client-message', status)
             print('Sent to server:', status)
-            sio.sleep(0.01)
+            sio.sleep(0.1)
         else:
             sio.disconnect()
             break
