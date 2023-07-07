@@ -98,7 +98,7 @@ def connect():  # heartbeat
             print("zzz")
             sio.sleep(2)
         elif status["mode"] == "awake":
-            lcd.backlight(False)
+            lcd.backlight(True)
             i += 1
             sio.emit('client-message', status)
             # print('Sent to server:', status)
