@@ -73,8 +73,7 @@ def on_server_message(new_status):
             motor3.throttle, motor4.throttle = throttles[new_status['direction']]
 
     if not new_status['message'] == status['message']:
-        lcd.text(new_status['message'], 1)
-
+        
         print("MESSAGE UPDATE")
         lcd.clear()
         text = new_status['message']
