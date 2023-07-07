@@ -75,16 +75,16 @@ def on_server_message(new_status):
     if not new_status['message'] == status['message']:
         lcd.text(new_status['message'], 1)
 
-        # print("MESSAGE UPDATE")
-        # lcd.clear()
-        # text = new_status['message']
-        # if len(text) > 16:
-        #     t1 = text[:16]
-        #     t2 = text[16:]
-        #     lcd.text(t1, 1)
-        #     lcd.text(t2, 2)
-        # else:
-        #     lcd.text(new_status['message'], 1)
+        print("MESSAGE UPDATE")
+        lcd.clear()
+        text = new_status['message']
+        if len(text) > 16:
+            t1 = text[:16]
+            t2 = text[16:]
+            lcd.text(t1, 1)
+            lcd.text(t2, 2)
+        else:
+            lcd.text(new_status['message'], 1)
     status.update(new_status)
 
 
