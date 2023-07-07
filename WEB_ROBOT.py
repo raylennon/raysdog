@@ -73,16 +73,18 @@ def on_server_message(new_status):
             motor3.throttle, motor4.throttle = throttles[new_status['direction']]
 
     if not new_status['message'] == status['message']:
-        print("MESSAGE UPDATE")
-        lcd.clear()
-        text = new_status['message']
-        if len(text) > 16:
-            t1 = text[:16]
-            t2 = text[16:]
-            lcd.text(t1, 1)
-            lcd.text(t2, 2)
-        else:
-            lcd.text(new_status['message'], 1)
+        lcd.text(new_status['message'], 1)
+
+        # print("MESSAGE UPDATE")
+        # lcd.clear()
+        # text = new_status['message']
+        # if len(text) > 16:
+        #     t1 = text[:16]
+        #     t2 = text[16:]
+        #     lcd.text(t1, 1)
+        #     lcd.text(t2, 2)
+        # else:
+        #     lcd.text(new_status['message'], 1)
     status.update(new_status)
 
 
