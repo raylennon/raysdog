@@ -14,25 +14,29 @@ def on_server_message(message):
     print('Received from server:', message)
     status.update(message)
 
+N=500
+
 @sio.event
 def connect(): # heartbeat
     global status
     i=0
-    while i<1000:
+    for _ in range(N):
         i+=1
         if status["mode"] == "asleep":
             sio.emit('client-message', status)
-            print("zzz")
+            # print("zzz")
             sio.sleep(2)
         elif status["mode"] == "awake":
             i+=1
             sio.emit('client-message', status)
-            print('Sent to server:', status)
-            sio.sleep(0.01)
-        else:
+            # print('Sent to server:', status)
+            sio.sleep(0.1)
+        elif status["mode"] == "off":
             sio.disconnect()
             break
-    if i==1000:
+        else:
+            print(f"What the hell? -> {status['mode']}")
+    else:
         print("TIMED OUT")
     sio.disconnect()
 
@@ -42,6 +46,6 @@ def disconnect():
     print('Disconnected from server.')
 
 
-# sio.connect('http://raysdog.com:8765')
-sio.connect('http://localhost:8765/')
+sio.connect('http://raysdog.com:8765')
+# sio.connect('http://localhost:8765/')
 sio.wait()

@@ -100,12 +100,12 @@ def handle_webhook():
             "STOP": (0, 0),
             "U": (1, 1),
             "D": (-1, -1),
-            "R": (1, -1),
-            "L": (-1, 1),
-            "RU": (1, 0.2),
-            "LU": (0.2, 1),
-            "RD": (-0.2, -1),
-            "LD": (-1, -0.2)
+            "L": (1, -1),
+            "R": (-1, 1),
+            "LU": (1, 0.2),
+            "RU": (0.2, 1),
+            "LD": (-0.2, -1),
+            "RD": (-1, -0.2)
         }
         if data['direction'] in throttles:
             motor3.throttle, motor4.throttle = throttles[data['direction']]
