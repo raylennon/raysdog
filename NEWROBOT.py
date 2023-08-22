@@ -94,7 +94,7 @@ async def send_camera_feed():
             break
 
         # Encode the frame as JPEG
-        frame = cv2.resize(frame, (270/2,180/2), interpolation = cv2.INTER_AREA)
+        frame = cv2.resize(frame, (int(270/2),int(180/2)), interpolation = cv2.INTER_AREA)
         _, buffer = cv2.imencode('.jpg', frame)
         encoded_image = base64.b64encode(buffer).decode('utf-8')
 
