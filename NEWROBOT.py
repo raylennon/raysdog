@@ -33,7 +33,7 @@ if not debug:
     motor3.decay_mode = (motor.SLOW_DECAY)
     motor4.decay_mode = (motor.SLOW_DECAY)
 
-    motor3.throttle, motor4.throttle=0
+    motor3.throttle, motor4.throttle=[0]*2
 
 
 status = {
