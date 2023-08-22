@@ -6,7 +6,7 @@ sio = socketio.AsyncClient()
 import platform
 debug = (platform.platform()[0:7]=="Windows")
 
-frame_interval=1/1
+frame_interval=1/20
 
 if not debug:
     from rpi_lcd import LCD
@@ -94,6 +94,7 @@ async def send_camera_feed():
             break
 
         # Encode the frame as JPEG
+        frame = cv2.resize(frame, (270,180), interpolation = cv2.INTER_AREA)
         _, buffer = cv2.imencode('.jpg', frame)
         encoded_image = base64.b64encode(buffer).decode('utf-8')
 
