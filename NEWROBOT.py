@@ -6,7 +6,7 @@ sio = socketio.AsyncClient()
 import platform
 debug = (platform.platform()[0:7]=="Windows")
 
-frame_interval=1/10
+frame_interval=1/1
 
 if not debug:
     from rpi_lcd import LCD
@@ -104,7 +104,9 @@ async def send_camera_feed():
         encoded_image = base64.b64encode(buffer).decode('utf-8')
 
         await sio.emit('camera frame', encoded_image)  # Emit the encoded frame
-
+        print("sent")
+        await sio.emit('camera frame', {12:12})  # Emit the encoded frame
+        print("sent, but weird")
         elapsed_time = time.time() - start_time
         await asyncio.sleep(max(0, frame_interval - elapsed_time))
 
@@ -115,12 +117,10 @@ async def disconnect():
 async def main():
     while True:
         try:
-            if not debug: # if debug:
-                await asyncio.gather(sio.connect('http://raysdog.com'), send_camera_feed())
-            else:
-                await asyncio.gather(sio.connect('http://raysdog.com'), send_camera_feed())
-                sio.connect('http://raysdog.com')
+            await sio.connect('http://raysdog.com:80')
             # await sio.connect('http://lacolhost.com')
+            send_camera_task = asyncio.create_task(send_camera_feed())
+            await send_camera_task
             await sio.wait()
         except socketio.exceptions.ConnectionError:
             print('Connection error occurred. Retrying...')
