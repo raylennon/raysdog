@@ -6,7 +6,7 @@ sio = socketio.AsyncClient()
 import platform
 debug = (platform.platform()[0:7]=="Windows")
 
-frame_interval=1/60
+frame_interval=1/20
 
 if not debug:
     from rpi_lcd import LCD
