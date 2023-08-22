@@ -1,12 +1,13 @@
 #!/usr/bin/env python
-from rpi_lcd import LCD
 from importlib import import_module
 import os
 from flask import Flask, render_template, Response, request, send_from_directory
+
 import numpy as np
+
+from rpi_lcd import LCD
 from board import SCL, SDA
 import busio
-
 from adafruit_pca9685 import PCA9685
 from adafruit_motor import motor
 
