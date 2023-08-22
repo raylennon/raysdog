@@ -52,10 +52,14 @@ throttles = {
     "LD": (-1, -0.2)
 }
 
+connection_event = asyncio.Event()
+
+
 @sio.event
 async def connect():
     print('Connection established')
     await sio.emit('chat message', 'Hello from Python!')
+    connection_event.set()  # Set the event to signal connection is ready
 
 @sio.on('user command')
 def handle_update(data):
@@ -81,6 +85,8 @@ def handle_update(data):
     status.update(data)
 
 async def send_camera_feed():
+
+    await connection_event.wait()
 
     import time
     import cv2
@@ -109,10 +115,11 @@ async def disconnect():
 async def main():
     while True:
         try:
-            if debug:
-                await sio.connect('http://raysdog.com')
+            if not debug: # if debug:
+                await asyncio.gather(sio.connect('http://raysdog.com'), send_camera_feed())
             else:
                 await asyncio.gather(sio.connect('http://raysdog.com'), send_camera_feed())
+                sio.connect('http://raysdog.com')
             # await sio.connect('http://lacolhost.com')
             await sio.wait()
         except socketio.exceptions.ConnectionError:
