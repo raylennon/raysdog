@@ -6,6 +6,8 @@ sio = socketio.AsyncClient()
 import platform
 debug = (platform.platform()[0:7]=="Windows")
 
+frame_interval=1/10
+
 if not debug:
     from rpi_lcd import LCD
     from board import SCL, SDA
@@ -78,6 +80,28 @@ def handle_update(data):
                     lcd.text(data['message'], 1)
     status.update(data)
 
+async def send_camera_feed():
+
+    import time
+    import cv2
+    import base64
+    camera = cv2.VideoCapture(0)
+
+    while True:
+        start_time = time.time()  # Record the start time of frame processing
+        ret, frame = camera.read()
+        if not ret:
+            break
+
+        # Encode the frame as JPEG
+        _, buffer = cv2.imencode('.jpg', frame)
+        encoded_image = base64.b64encode(buffer).decode('utf-8')
+
+        await sio.emit('camera frame', encoded_image)  # Emit the encoded frame
+
+        elapsed_time = time.time() - start_time
+        await asyncio.sleep(max(0, frame_interval - elapsed_time))
+
 @sio.event
 async def disconnect():
     print('disconnected from server')
@@ -85,7 +109,10 @@ async def disconnect():
 async def main():
     while True:
         try:
-            await sio.connect('http://raysdog.com')
+            if debug:
+                await sio.connect('http://raysdog.com')
+            else:
+                await asyncio.gather(sio.connect('http://raysdog.com'), send_camera_feed())
             # await sio.connect('http://lacolhost.com')
             await sio.wait()
         except socketio.exceptions.ConnectionError:
