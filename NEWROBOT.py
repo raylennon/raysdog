@@ -52,14 +52,10 @@ throttles = {
     "LD": (-1, -0.2)
 }
 
-connection_event = asyncio.Event()
-
-
 @sio.event
 async def connect():
     print('Connection established')
     await sio.emit('chat message', 'Hello from Python!')
-    connection_event.set()  # Set the event to signal connection is ready
 
 @sio.on('user command')
 def handle_update(data):
@@ -86,8 +82,6 @@ def handle_update(data):
 
 async def send_camera_feed():
 
-    await connection_event.wait()
-
     import time
     import cv2
     import base64
@@ -105,8 +99,7 @@ async def send_camera_feed():
 
         await sio.emit('camera frame', encoded_image)  # Emit the encoded frame
         print("sent")
-        await sio.emit('camera frame', {12:12})  # Emit the encoded frame
-        print("sent, but weird")
+
         elapsed_time = time.time() - start_time
         await asyncio.sleep(max(0, frame_interval - elapsed_time))
 
