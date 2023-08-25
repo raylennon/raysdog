@@ -82,9 +82,12 @@ def drive():
     else:
         return render_template('login.html', error=True)
 
+import cv2
+
 def gen(camera):
     while True:
         frame = camera.get_frame()
+        frame = cv2.flip(frame, 0)
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
