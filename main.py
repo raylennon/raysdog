@@ -10,6 +10,9 @@ from picamera2 import Picamera2
 from picamera2.encoders import JpegEncoder
 from picamera2.outputs import FileOutput
 
+# Import command handler
+from commands import handle_command
+
 class StreamingOutput(io.BufferedIOBase):
     def __init__(self):
         self.frame = None
@@ -57,9 +60,10 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                 logging.warning(
                     'Removed streaming client %s: %s',
                     self.client_address, str(e))
-        elif self.path == '/button_pressed':
-            # Handle button press event
-            print("pressed!")
+        elif self.path.startswith('/command/'):
+            # Handle command requests
+            command = self.path.split('/')[-1]  # Extract the command from the URL
+            handle_command(command)  # Call the command handler
             self.send_response(200)
             self.end_headers()
         else:
