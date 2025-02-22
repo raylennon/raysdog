@@ -20,7 +20,7 @@
                 });
         }
 
-        // Capture keystrokes
+        // Capture keydown events
         document.addEventListener('keydown', (event) => {
             switch (event.key) {
                 case 'ArrowUp':
@@ -39,11 +39,18 @@
                     console.log(`Unhandled key: ${event.key}`);
             }
         });
+
+        // Capture keyup events to stop motors
+        document.addEventListener('keyup', (event) => {
+            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+                sendCommand('stop');
+            }
+        });
     </script>
 </head>
 <body>
     <h1>Picamera2 MJPEG Streaming Demo</h1>
     <img src="stream.mjpg" width="640" height="480" alt="Live Stream">
-    <p>Press an arrow key to send a command to the server.</p>
+    <p>Press an arrow key to control the motors. Release the key to stop.</p>
 </body>
 </html>
