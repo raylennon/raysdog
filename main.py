@@ -57,6 +57,11 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                 logging.warning(
                     'Removed streaming client %s: %s',
                     self.client_address, str(e))
+        elif self.path == '/button_pressed':
+            # Handle button press event
+            print("pressed!")
+            self.send_response(200)
+            self.end_headers()
         else:
             self.send_error(404)
             self.end_headers()

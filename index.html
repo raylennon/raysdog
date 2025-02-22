@@ -4,9 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Picamera2 MJPEG Streaming Demo</title>
+    <script>
+        function handleButtonPress() {
+            // Send a request to the server when the button is pressed
+            fetch('/button_pressed')
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Button press recorded!');
+                    } else {
+                        console.error('Failed to record button press.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
 </head>
 <body>
     <h1>Picamera2 MJPEG Streaming Demo</h1>
     <img src="stream.mjpg" width="640" height="480" alt="Live Stream">
+    <br>
+    <button onclick="handleButtonPress()">Press Me!</button>
 </body>
 </html>
