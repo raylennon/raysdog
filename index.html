@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,10 +48,21 @@
             }
         });
     </script>
+    <style>
+        .rotate90 {
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+    </style>
 </head>
+
 <body>
     <h1>Picamera2 MJPEG Streaming Demo</h1>
-    <img src="stream.mjpg" width="640" height="480" alt="Live Stream">
+    <img class="rotate" src="stream.mjpg" width="640" height="480" alt="Live Stream">
     <p>Press an arrow key to control the motors. Release the key to stop.</p>
 </body>
+
 </html>
