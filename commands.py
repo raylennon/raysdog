@@ -52,20 +52,20 @@ def handle_command(command):
 
     if command == "up":
         print("Driving forward...")
-        motor3.throttle = -speed  # Left motor forward
-        motor4.throttle = -speed  # Right motor forward
+        motor3.throttle = speed  # Left motor forward
+        motor4.throttle = speed  # Right motor forward
     elif command == "down":
         print("Driving backward...")
-        motor3.throttle = speed  # Left motor backward
-        motor4.throttle = speed  # Right motor backward
+        motor3.throttle = -speed  # Left motor backward
+        motor4.throttle = -speed  # Right motor backward
     elif command == "left":
         print("Turning left...")
-        motor3.throttle = -speed  # Left motor backward
-        motor4.throttle = speed   # Right motor forward
+        motor3.throttle = speed  # Left motor backward
+        motor4.throttle = -speed   # Right motor forward
     elif command == "right":
         print("Turning right...")
-        motor3.throttle = speed   # Left motor forward
-        motor4.throttle = -speed  # Right motor backward
+        motor3.throttle = -speed   # Left motor forward
+        motor4.throttle = speed  # Right motor backward
     elif command == "stop":
         print("Stopping motors...")
         motor3.throttle = 0  # Left motor stop
